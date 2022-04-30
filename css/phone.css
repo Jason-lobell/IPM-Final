@@ -1,0 +1,12 @@
+nav a{
+    display: block;
+    padding: .5%;
+}
+
+nav {
+    text-align: left;
+}
+
+h1, h2{
+    font-size: large;
+}
