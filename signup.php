@@ -65,17 +65,16 @@ else{
     }
     else {
         print "<p>Check to make sure you entered a password and Confirmed it correctly</p>";
-        print "<p>" . $password1 . " Password 1 " . $password2;
         $saveData = false;  
     }
     if(strlen($username) > 1){
-        $sql = "SELECT fldUsername FROM tblAccount WHERE fldUsername = ?";
-        $data = $username;
+        $sql = "SELECT * FROM tblAccount WHERE fldUsername = ?";
+        $data = array($username);
     
-        // if(array_search($username, $thisDatabaseReader->select($sql, $data))){
-        //     print "<p>Username is already taken</p>";
-        //     $saveData = false;
-        // }
+        if($thisDatabaseReader->select($sql, $data)){
+            print "<p>Username is already taken</p>";
+            $saveData = false;
+        }
     }
     else{
         print "<p>Please enter a username</p>";
