@@ -1,5 +1,5 @@
 <?php
-define('DATABASE_NAME', 'ADERUSSO_cs148_lab4');
+define('DATABASE_NAME', 'ADERUSSO_cs148_Final_JAM');
 
 define('DEBUG', false);
 

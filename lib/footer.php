@@ -1,6 +1,8 @@
 <footer>
-    <p>Andrew DeRusso's <a href="../index.php">Site map (Main index)</a></p>
-    <p><cite>Information and images from <a href="https://vtfishandwildlife.com/">vtfishandwildlife.com</a></cite></p>
+    <p><a href="../index.php">Site Map</a></p>
+    <p><a href="//aderusso.w3.uvm.edu/cs148/live-final">Andrew DeRusso Final</a></p>
+    <p><a href="//jvlobell.w3.uvm.edu/cs148/live-final">Jay Lobell Final</a></p>
+    <p><a href="//mpursche.w3.uvm.edu/cs148/live-final"></a></p>
 </footer>
 </body>
 </html>
