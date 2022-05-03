@@ -59,9 +59,8 @@ else{
             </p>
         </fieldset>
     </form>
+    <a href="signup.php">New User? Signup Here!</a>
 </main>
-
-
 
 <?php
 include 'lib/footer.php';

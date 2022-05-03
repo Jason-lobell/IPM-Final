@@ -18,6 +18,11 @@ define('PATH_PARTS', array('filename' => 'about'));
         print'activePage';
     }
     ?>" href="../contact.php">Contact</a>
+    <a class="<?php
+    if (PATH_PARTS['filename'] == "login"){
+        print'activePage';
+    }
+    ?>" href="../login.php">Login</a>
     <div class="dropdown">
     <button class="dropbtn">Admin
       <i class="fa fa-caret-down"></i>
