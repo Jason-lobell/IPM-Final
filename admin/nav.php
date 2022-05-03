@@ -7,7 +7,7 @@ define('PATH_PARTS', array('filename' => 'about'));
     if (PATH_PARTS['filename'] == "index"){
         print'activePage';
     }
-    ?>" href="../index.php">Index</a>
+    ?>" href="../index.php">Home</a>
     <a class="<?php
     if (PATH_PARTS['filename'] == "about"){
         print'activePage';

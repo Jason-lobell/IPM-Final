@@ -1,3 +1,3 @@
 <header>
-    <h1></h1>
+    <h1>Major Marketplace</h1>
 </header>
