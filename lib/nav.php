@@ -23,6 +23,11 @@ define('PATH_PARTS', array('filename' => 'about'));
     }
     ?>" href="login.php">Login</a>
     <a class="<?php
+    if (PATH_PARTS['filename'] == "account"){
+        print'activePage';
+    }
+    ?>" href="account.php">Account</a>
+    <a class="<?php
     if (PATH_PARTS['filename'] == "admin"){
         print'activePage';
     }

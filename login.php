@@ -35,7 +35,10 @@ else{
         session_start();
         $_SESSION["userId"] = $results[0]["pmkAccountId"];
         $_SESSION["userUname"] = $results[0]["fldUsername"];
-        $_SESSION["profPic"] = $results[0]["fldProfilePicture"];
+        $_SESSION["profPic"] = $results[0]["fldProfilePhoto"];
+        $_SESSION["firstName"] = $results[0]["fldFirstName"];
+        $_SESSION["lastName"] = $results[0]["fldLastName"];
+        $_SESSION["userEmail"] = $results[0]["fldEmail"];
         print '<script>
         window.alert("Logged in! Welcome' . $_SESSION["userUname"] .'");
         setTimeout(window.location.replace("index.php"), 5000);

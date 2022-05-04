@@ -87,13 +87,14 @@ else{
 
     if($saveData){
 
-        $sql = 'INSERT INTO tblAccount SET fldFirstName = ? , fldLastName = ? , fldEmail = ? , fldUsername = ? , fldPassword = MD5(?)';
+        $sql = 'INSERT INTO tblAccount SET fldFirstName = ? , fldLastName = ? , fldEmail = ? , fldUsername = ? , fldPassword = MD5(?) , fldProfilePhoto = ?';
         $data = array();
         $data[] .= $firstName;
         $data[] .= $lastName;
         $data[] .= $emailAdress;
         $data[] .= $username;
         $data[] .= $password1;
+        $data[] .= 'default.jpg';
 
         if(isset($_POST['btnSubmit'])){
             try{
@@ -105,7 +106,6 @@ else{
                 }
         } catch (PDOException $e) {
             print '<p>Couldn\'t Finish Sign up. Please contact us at 914-815-5624 for help:(.</p>';
-            print '<p>' . $e . '</p>';
         }
         }
     

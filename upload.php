@@ -1,6 +1,6 @@
 <?php
 include 'lib/top.php';
-if(isset($_POST['submit'])){
+if(isset($_POST['btnSubmit'])){
     $file = $_FILES['file'];
 
     $fileName = $_FILES['file']['name'];
@@ -8,7 +8,6 @@ if(isset($_POST['submit'])){
     $fileSize = $_FILES['file']['size'];
     $fileError = $_FILES['file']['error'];
     $fileType = $_FILES['file']['type'];
-
     $fileNameParts = explode('.', $fileName);
     $fileExtension = strtolower(end($fileNameParts));
 
@@ -34,25 +33,41 @@ if(isset($_POST['submit'])){
                 $data[] .= $_SESSION['userId'];
 
                 if($thisDatabaseWriter->update($sql, $data)){
-                    print '<p>Image Uploaded Successfully</p>';
+                    $_SESSION['profPic'] = $fileDestination;
+                    print '<script>
+                    window.alert("Image Uploaded Successfully");
+                    setTimeout(window.location.replace("account.php"), 5000);
+                    </script>';
                 }
                 else{
-                    print '<p>Image uploaded but not saved please contact an admin for help!';
+                    print '<script>
+                    window.alert("Image uploaded but not saved please contact an admin for help!");
+                    setTimeout(window.location.replace("account.php"), 5000);
+                    </script>';
                 }
                 
             }
             else{
-                print '<p>File is too big, Upload a smaller image</p>';
+                print '<script>
+                window.alert("File is too big, Upload a smaller image");
+                setTimeout(window.location.replace("account.php"), 5000);
+                </script>';
             }
         }
         else{
-            print '<p>There was an error uploading file! Try again.</p>';
+            print '<script>
+            window.alert("There was an error uploading photo please try again");
+            setTimeout(window.location.replace("account.php"), 5000);
+            </script>';
         }
     }
     else{
-        print '<p>You Cannot Upload a File of this type!!</p>';
-        print '<p>Only .jpg, .jpeg, and .png files are allowed.</p>';
+        print '<script>
+        window.alert("You Cannot Upload a File of this type!! Only .jpg, .jpeg, and .png files are allowed");
+        setTimeout(window.location.replace("account.php"), 5000);
+        </script>';
     }
 
 }
+include 'lib/footer.php';
 ?>

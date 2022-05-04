@@ -29,6 +29,7 @@
         ?>
     </head>
 <?php
+session_start();
 print '<body>';
 print '<!-- ***** START OF BODY ****** -->';
 
