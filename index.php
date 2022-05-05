@@ -1,5 +1,8 @@
 <?php
 include 'lib/top.php';
+
+$idk = getenv('SQUARE_ACCESS_TOKEN');
+print '<p>' . $idk . '</p>';
 ?>
 <main>
     <h1>Home Page</h1>
