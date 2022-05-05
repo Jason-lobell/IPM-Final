@@ -5,7 +5,7 @@ use Square\SquareClient;
 use Square\Environment;
 use Square\Exceptions\ApiException;
 
-#putenv('SQUARE_ACCESS_TOKEN=EAAAEAKGqT5HJRmmABos29dEnrME4iYc6xjeFChAJCwSvXxbx6l2fPAGX6rta_oG');
+putenv('SQUARE_ACCESS_TOKEN=EAAAEAKGqT5HJRmmABos29dEnrME4iYc6xjeFChAJCwSvXxbx6l2fPAGX6rta_oG');
 
 $client = new SquareClient([
     'accessToken' => getenv('SQUARE_ACCESS_TOKEN'),
