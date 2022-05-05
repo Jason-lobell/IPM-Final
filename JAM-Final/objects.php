@@ -24,12 +24,38 @@ class Card
         $this->indepodenceyKey = $indepodenceyKey;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->lastName = $lastName;
+        $this->lastFour = $lastFour;
         $this->cardBrand = $cardBrand;
         $this->month = $month;
         $this->year = $year;
         $this->addressToken = $addressToken;
     }
+
+    // Getters
+        function getSourceID() : int {return $sourceID;}
+        function getReferenceID() : int {return $referenceID;}
+        function getCustomerID() : int {return $customerID;}
+        function getIndepodenceyKey() : string {return $indepodenceyKey;}
+        function getfirstName() : string {return $firstName;}
+        function getCardBrand() : string {return $cardBrand;}
+        function getLastName() : string {return $lastName;}
+        function getLastFour() : int {return $lastFour;}
+        function getMonth() : int {return $month;}
+        function getYear() : int {return $year;}
+        function getAddressToken() : BillingAddress {return $addressToken;}
+    // Setters
+        function setSourceID($sourceID) {$this->sourceID = $sourceID;}
+        function setReferenceID($referenceID)  {$this->referenceID = $referenceID;}
+        function setCustomerID($customerID) {$this->customerID = $customerID;}
+        function setIndepodenceyKey($indepodenceyKey) {$this->indepodenceyKey = $indepodenceyKey;}
+        function setfirstName($firstName) {$this->firstName = $firstName;}
+        function setCardBrand($cardBrand) {$this->cardBrand = $cardBrand;}
+        function setLastName($lastName) {$this->lastName = $lastName;}
+        function setLastFour($lastFour) {$this->lastFour = $lastFour;}
+        function setMonth($month) {$this->month = $month;}
+        function setYear($year) {$this->year = $year;}
+        function setAddressToken($addressToken) {$this->addressToken = $addressToken;}
+
 
 }
 //BillingAddress object => Used in Card Creation, but parameter reduction in the Card constructor is always welcome
@@ -54,6 +80,22 @@ class BillingAddress
             $this->zipCode = $zipCode;
             $this->country = $country;
         }
+        // Getters
+            function getLineOne() : string {return $lineOne;}
+            function getLineTwo() : string {return $lineTwo;}
+            function getLineThree() : string {return $lineThree;}
+            function getState() : string {return $state;}
+            function getZipCode() : int{return $zipCode;}
+            function getCity() : string{return $city;}
+            function getCountry() : string{return $country;}
+        // Setters
+            function setLineOne($lineOne){$this->lineOne = $lineOne;}
+            function setLineTwo(){$this->lineTwo = $lineTwo;}
+            function setLineThree($lineThree){$this->lineThree = $lineThree;}
+            function setState($state){$this->state = $state; }
+            function setZipCode(){$this->zipCode = $zipCode;}
+            function setCity(){$this->city = $city;}
+            function setCountry(){$this->country = $country;}
 }
 // Payment object => Used to create object that can pass parameters to the api
 class Payment
@@ -80,6 +122,27 @@ class Payment
         $this->appFee = $appFee;
         $this->$tipAmount = $tipAmount;
     }
+
+    // Getters
+        function getSourceID() : int {return $sourceID;}
+        function getReferenceID() : int {return $referenceID;}
+        function getCustomerID() : int {return $customerID;}
+        function getIndepodenceyKey() : string{return $indepodenceyKey;}
+        function getOrderID() : int {return $orderID;}
+        function getAmount() : double {return $amount;}
+        function getAppFee() : double {return $appFee;}
+        function getTipAmount() : double {return $tipAmount;}
+
+    // Setters
+        function setSourceID($sourceID){$this->sourceID = $sourceID;}
+        function setReferenceID(){$this->referenceID = $referenceID;}
+        function setCustomerID(){$this->customerID = $customerID;}
+        function setIndepodenceyKey(){$this->indepodenceyKey = $indepodenceyKey;}
+        function setOrderID(){$this->orderID = $orderID;}
+        function setAmount(){$this->amount = $amount;}
+        function setAppFee(){$this->appFee = $appFee;}
+        function setTipAmount(){$this->tipAmount = $tipAmount;}
+
 
 
 }
