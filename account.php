@@ -45,15 +45,11 @@ else{
             print '<p>Couldn\'t change record. Please contact us at 914-815-5624 for help:(.</p>';
         }
         }
-    
         if(DEBUG) {
             print "<p>" . $thisDatabaseReader->displayQuery($sql, $data) . "</p>    ";
         }
     }
-
 }
-
-
 ?>
 <main>
     <h1>Account Overview</h1>
@@ -69,6 +65,7 @@ else{
             <p>
                 <label for="file">Upload Profile Picture</label>
                 <input type="file" name="file">
+                <input type="hidden" name="updatePP" value="1">
                 <input type="submit" name="btnSubmit" value="Submit">
             </p>
         </fieldset>
