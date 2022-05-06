@@ -475,9 +475,132 @@ class Error
 {
     public function __construct(){}
 }
+
+class Test {
+///// TEST CODE /////
+
+    //Card
+    $sourceID = 1;
+    $referenceID = 1;
+    $customerID= 1;
+    $indepodenceyKey = "test";
+    $firstName = "test";
+    $lastFour = 1312;
+    $lastName = "test";
+    $cardBrand = "test";
+    $month = 1;
+    $year = 1;
+
+        //BillingAddress object
+
+             $lineOne = "test";
+             $lineTwo = "test";
+             $lineThree = "test";
+             $state = "test";
+             $city = "test";
+             $zipCode = 12341;
+             $country = "test";
+
+    $addressToken = new BillingAddress($lineOne,$lineTwo,$lineThree,$lastFour, $state, $zipCode, $country);
+
+        echo "" . $addressToken->getLineOne() . "";
+        echo "" . $addressToken->getLineTwo() . "";
+        echo "" . $addressToken->getLineThree() . "";
+        echo "" . $addressToken->getState() . "";
+        echo "" . $addressToken->getCity() . "";
+        echo "" . $addressToken->getZipCode() . "";
+        echo "" . $addressToken->getCountry() . "";
+
+
+    $card = new Card($sourceID, $referenceID, $customerID, $indepodenceyKey, $firstName, $lastName, $lastFour, $cardBrand, $month, $year, $addressToken);
+
+        echo "" . $card->getSourceID() . "";
+        echo "" . $card->getReferenceID() . "";
+        echo "" . $card->getCustomerID() . "";
+        echo "" . $card->getIndepodenceyKey() . "";
+        echo "" . $card->getFirstName() . "";
+        echo "" . $card->getLastName() . "";
+        echo "" . $card->getLastFour() . "";
+        echo "" . $card->getCardBrand() . "";
+        echo "" . $card->getMonth() . "";
+        echo "" . $card->getYear() . "";
+
+    //Payment
+     $sourceID = 1;
+     $referenceID = 1;
+     $customerID = 1;
+     $indepodenceyKey = 1;
+     $orderID = 1;
+     $amount = 1;
+     $appFee = 1;
+     $tipAmount = 1;
+
+   $payment = new Payment($sourceID, $referenceID, $customerID, $indepodenceyKey, $orderID, $amount, $appFee, $tipAmount);
+
+        echo "" . $payment->getSourceID() . "" ;
+        echo "" . $payment->getReferenceID() . "" ;
+        echo "" . $payment->getCustomerID() . "" ;
+        echo "" . $payment->getIndepodenceyKey() . "" ;
+        echo "" . $payment->getOrderID() . "" ;
+        echo "" . $payment->getAppFee() . "" ;
+        echo "" . $payment->getTipAmount() . "" ;
+
+
+   //Item
+     $itemID = 1;
+     $itemName = 1;
+     $itemPrice = 1;
+     $itemPicture = 1;
+     $quantity = 1;
+
+   $item = new Item($itemID, $itemName, $itemPrice, $itemPicture, $quantity);
+
+        echo "" . $item->getItemID() . ""
+        echo "" . $item->getItemName() . ""
+        echo "" . $item->getItemPrice() . ""
+        echo "" . $item->getItemPicture() . ""
+        echo "" . $item->getQuantity() . ""
+
+   //Account
+     $firstName = 1;
+     $lastName = 1;
+     $email = 1;
+     $accountID = 1;
+     $username = 1;
+     $password = 1;
+     $profile = 1;
+
+   $account = new Account($firstName, $lastName, $email, $accountID, $username, $password, $profile);
+
+       echo "" . $account->getFirstName() . "";
+       echo "" . $account->getLastName() . "";
+       echo "" . $account->getEmail() . "";
+       echo "" . $account->getAccountID() . "";
+       echo "" . $account->getUsername() . "";
+       echo "" . $account->getPassword() . "";
+       echo "" . $account->getProfile() . "";
+
+
+   //Transaction
+     $transactionID = 1;
+     $senderID = 1;
+     $receiverID= 1;
+     $itemID = 1;
+     $transactionAmount = 1;
+     $date = 1;
+
+   $transaction = new Transaction($transactionID, $senderID, $receiverID, $itemID, $transactionAmount, $date);
+
+       echo "" . $transaction->getTransactionID() . "" ;
+       echo "" . $transaction->getSenderID() . "" ;
+       echo "" . $transaction->getReceiverID() . "" ;
+       echo "" . $transaction->getItemID() . "" ;
+       echo "" . $transaction->getTransactionAmount() . "" ;
+       echo "" . $transaction->getDate() . "" ;
+
+
+}
 ?>
-
-
 
 
 
