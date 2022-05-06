@@ -6,13 +6,12 @@ use Square\SquareClient;
 use Square\Environment;
 use Square\Exceptions\ApiException;
 
-define(SQUARE_ACCESS_TOKEN, "EAAAEAKGqT5HJRmmABos29dEnrME4iYc6xjeFChAJCwSvXxbx6l2fPAGX6rta_oG");
-define(SQUARE_APPLICATION_ID, "sandbox-sq0idb-VJ0u64Lfk4fWpYxu5P_6pg");
-define(LOCATION_ID, "L9ARQHGTNAH8D");
+$SQUARE_ACCESS_TOKEN = "EAAAEAKGqT5HJRmmABos29dEnrME4iYc6xjeFChAJCwSvXxbx6l2fPAGX6rta_oG";
+$SQUARE_APPLICATION_ID = "sandbox-sq0idb-VJ0u64Lfk4fWpYxu5P_6pg";
 
 
 $client = new SquareClient([
-    'accessToken' => SQUARE_ACCESS_TOKEN,
+    'accessToken' => $SQUARE_ACCESS_TOKEN,
     'environment' => Environment::SANDBOX,
 ]);
 
@@ -23,18 +22,18 @@ $paymentsApi = $client->getPaymentsApi();
 // Card object => Used to create object that can pass parameters to the api
 class Card
 {
-    protected $sourceID;
-    protected $referenceID;
-    protected $customerID;
-    protected $indepodenceyKey;
-    protected $firstName;
-    protected $lastName;
-    protected $lastFour;
-    protected $cardBrand;
-    protected $month;
-    protected $year;
+    public $sourceID;
+    public $referenceID;
+    public $customerID;
+    public $indepodenceyKey;
+    public $firstName;
+    public $lastName;
+    public $lastFour;
+    public $cardBrand;
+    public $month;
+    public $year;
     //BillingAddress object
-    protected $addressToken;
+    public $addressToken;
 
     public function __construct($sourceID, $referenceID, $customerID, $indepodenceyKey, $firstName, $lastName, $lastFour, $cardBrand, $month, $year, $addressToken)
     {
@@ -52,17 +51,17 @@ class Card
     }
 
     // Getters
-        function getSourceID() : int {return $sourceID;}
-        function getReferenceID() : int {return $referenceID;}
-        function getCustomerID() : int {return $customerID;}
-        function getIndepodenceyKey() : string {return $indepodenceyKey;}
-        function getfirstName() : string {return $firstName;}
-        function getCardBrand() : string {return $cardBrand;}
-        function getLastName() : string {return $lastName;}
-        function getLastFour() : int {return $lastFour;}
-        function getMonth() : int {return $month;}
-        function getYear() : int {return $year;}
-        function getAddressToken() : BillingAddress {return $addressToken;}
+        public function getSourceID() : int {return $this->sourceID;}
+        function getReferenceID() : int {return $this->referenceID;}
+        function getCustomerID() : int {return $this->customerID;}
+        function getIndepodenceyKey() : string {return $this->indepodenceyKey;}
+        function getfirstName() : string {return $this->firstName;}
+        function getCardBrand() : string {return $this->cardBrand;}
+        function getLastName() : string {return $this->lastName;}
+        function getLastFour() : int {return $this->lastFour;}
+        function getMonth() : int {return $this->month;}
+        function getYear() : int {return $this->year;}
+        function getAddressToken() : BillingAddress {return $this->addressToken;}
     // Setters
         function setSourceID($sourceID) {$this->sourceID = $sourceID;}
         function setReferenceID($referenceID)  {$this->referenceID = $referenceID;}
@@ -82,13 +81,13 @@ class Card
 
 class BillingAddress
 {
-        protected $lineOne;
-        protected $lineTwo;
-        protected $lineThree;
-        protected $state;
-        protected $city;
-        protected $zipCode;
-        protected $country;
+        public $lineOne;
+        public $lineTwo;
+        public $lineThree;
+        public $state;
+        public $city;
+        public $zipCode;
+        public $country;
 
         public function __construct($lineOne, $lineTwo, $lineThree, $state, $city, $zipCode, $country)
         {
@@ -101,21 +100,21 @@ class BillingAddress
             $this->country = $country;
         }
         // Getters
-            function getLineOne() : string {return $lineOne;}
-            function getLineTwo() : string {return $lineTwo;}
-            function getLineThree() : string {return $lineThree;}
-            function getState() : string {return $state;}
-            function getZipCode() : int{return $zipCode;}
-            function getCity() : string{return $city;}
-            function getCountry() : string{return $country;}
+            function getLineOne() : string {return $this->lineOne;}
+            function getLineTwo() : string {return $this->lineTwo;}
+            function getLineThree() : string {return $this->lineThree;}
+            function getState() : string {return $this->state;}
+            function getZipCode() : int{return $this->zipCode;}
+            function getCity() : string{return $this->city;}
+            function getCountry() : string{return $this->country;}
         // Setters
             function setLineOne($lineOne){$this->lineOne = $lineOne;}
-            function setLineTwo(){$this->lineTwo = $lineTwo;}
+            function setLineTwo($lineTwo){$this->lineTwo = $lineTwo;}
             function setLineThree($lineThree){$this->lineThree = $lineThree;}
             function setState($state){$this->state = $state; }
-            function setZipCode(){$this->zipCode = $zipCode;}
-            function setCity(){$this->city = $city;}
-            function setCountry(){$this->country = $country;}
+            function setZipCode($zipCode){$this->zipCode = $zipCode;}
+            function setCity($city){$this->city = $city;}
+            function setCountry($country){$this->country = $country;}
 }
 // Payment object => Used to create object that can pass parameters to the api
 class Payment
@@ -144,24 +143,24 @@ class Payment
     }
 
     // Getters
-        function getSourceID() : int {return $sourceID;}
-        function getReferenceID() : int {return $referenceID;}
-        function getCustomerID() : int {return $customerID;}
-        function getIndepodenceyKey() : string{return $indepodenceyKey;}
-        function getOrderID() : int {return $orderID;}
-        function getAmount() : double {return $amount;}
-        function getAppFee() : double {return $appFee;}
-        function getTipAmount() : double {return $tipAmount;}
+        function getSourceID() : int {return $this->sourceID;}
+        function getReferenceID() : int {return $this->referenceID;}
+        function getCustomerID() : int {return $this->customerID;}
+        function getIndepodenceyKey() : string{return $this->indepodenceyKey;}
+        function getOrderID() : int {return $this->orderID;}
+        function getAmount() : float {return $this->amount;}
+        function getAppFee() : float {return $this->appFee;}
+        function getTipAmount() : float {return $this->tipAmount;}
 
     // Setters
         function setSourceID($sourceID){$this->sourceID = $sourceID;}
-        function setReferenceID(){$this->referenceID = $referenceID;}
-        function setCustomerID(){$this->customerID = $customerID;}
-        function setIndepodenceyKey(){$this->indepodenceyKey = $indepodenceyKey;}
-        function setOrderID(){$this->orderID = $orderID;}
-        function setAmount(){$this->amount = $amount;}
-        function setAppFee(){$this->appFee = $appFee;}
-        function setTipAmount(){$this->tipAmount = $tipAmount;}
+        function setReferenceID($referenceID){$this->referenceID = $referenceID;}
+        function setCustomerID($customerID){$this->customerID = $customerID;}
+        function setIndepodenceyKey($indepodenceyKey){$this->indepodenceyKey = $indepodenceyKey;}
+        function setOrderID($orderID){$this->orderID = $orderID;}
+        function setAmount($amount){$this->amount = $amount;}
+        function setAppFee($appFee){$this->appFee = $appFee;}
+        function setTipAmount($tipAmount){$this->tipAmount = $tipAmount;}
 
 
 
@@ -174,8 +173,14 @@ class EventHandler
     protected $websiteData = [];
 
     public function __construct(){}
-    function createEvent($eventType) : Event {}
-    function createResponse($eventType) : Response {}
+    function createEvent($eventType) : Event {
+        $event = new Event($eventType);
+        return $event;
+    }
+    function createResponse($eventType) : Response {
+        $response = new Response($eventType);
+        return $response;
+    }
 }
 
 // EventType Enum => Groups data types for event handler
@@ -198,7 +203,7 @@ class Event
     public function __construct($eventType)
     {
         $this->eventType = $eventType;
-        $eventID++;
+        $this->eventID++;
     }
 
 }
@@ -206,28 +211,31 @@ class Event
 class Response
 {
 
-    protected $eventType;
-    protected $responseID = 0;
+    public $eventType;
+    public $responseID = 0;
 
     public function __construct($eventType)
     {
         $this->eventType = EventType($eventType);
-        $responseID++;
+        $this->responseID++;
 
-        switch($eventType)
+        switch($eventType) {
 
             case EventType::Transaction:
-                promptTransaction();
+                $this->promptTransaction();
                 break;
             case EventType::Account:
-                promptAccountRegistration();
+                $this->promptAccountRegistration();
                 break;
             case EventType::Item:
-                promptItemCreation();
+                $this->promptItemCreation();
                 break;
             case EventType::Error:
-                promptError();
+                $this->promptError();
                 break;
+
+
+        }
     }
     // prompt object creation (passed off to builder objects)
     function promptTransaction(){}
@@ -250,11 +258,11 @@ class TransactionBuilder
         $card = $transaction->createCard($cardData);
         $paymentData = $transaction->promptPayment();
         $payment = $transaction->createPayment($paymentData);
-        $transactionCount++;
+        $this->transactionCount++;
     }
     function getCount()
     {
-        return $transactionCount;
+        return $this->transactionCount;
     }
 }
 
@@ -266,8 +274,10 @@ class Transaction
     protected $itemID;
     protected $transactionAmount;
     protected $date;
+    public $LOCATION_ID = "L9ARQHGTNAH8D";
 
-    public function __construct($transactionID, $senderID, $receiverID, $transactionAmount, $date)
+
+    public function __construct($transactionID, $senderID, $receiverID,$itemID, $transactionAmount, $date)
     {
         $this->transactionID = $transactionID;
         $this->senderID = $senderID;
@@ -277,25 +287,24 @@ class Transaction
         $this->date = $date;
     }
 
-    function getTransactionID() : int {return $transactionID;}
-    function getSenderID() : int {return $senderID;}
-    function getReceiverID() : int {return $receiverID;}
-    function getItemID() : int {return $itemID;}
-    function getTransactionAmount() : double {return $transactionAmount;}
-    function getDate() : string {return $date;}
+    function getTransactionID() : int {return $this->transactionID;}
+    function getSenderID() : int {return $this->senderID;}
+    function getReceiverID() : int {return $this->receiverID;}
+    function getItemID() : int {return $this->itemID;}
+    function getTransactionAmount() : float {return $this->transactionAmount;}
+    function getDate() : string {return $this->date;}
 
-    function setTransactionID() {$this->transactionID = $transactionID;}
-    function setSenderID() {$this->senderID = $senderID;}
-    function setReceiverID() {$this->receiverID = $receiverID;}
-    function setItemID() {$this->itemID = $itemID;}
-    function setTransactionAmount() {$this->transactionAmount = $transactionAmount;}
-    function setDate() {$this->date = $date;}
+    function setTransactionID($transactionID) {$this->transactionID = $transactionID;}
+    function setSenderID($senderID) {$this->senderID = $senderID;}
+    function setReceiverID($receiverID) {$this->receiverID = $receiverID;}
+    function setItemID($itemID) {$this->itemID = $itemID;}
+    function setTransactionAmount($transactionAmount) {$this->transactionAmount = $transactionAmount;}
+    function setDate($date) {$this->date = $date;}
 
 
     function promptCard() : array {}
     function createCard($card)
     {
-        $idempotencyKey = $card->getIndepodenceyKey();
         $sourceID = $card->getSourceID();
 
 
@@ -317,12 +326,12 @@ class Transaction
         $body->getBillingAddress()->setCountry(Models\Country::US);
         $body->setCustomerId($card->getCustomerID());
         $body->setReferenceId($card->getReferenceID());
-
-        $request = new Models\CreateCardRequest($indepodenceyKey, $sourceID, $body);
+        $idempotencyKey = $card->getIndepodenceyKey();
+        $request = new Models\CreateCardRequest($idempotencyKey, $sourceID, $body);
 
         $request->setVerificationToken(uniqid());
 
-        $apiResponse = $cardsApi->createCard($request);
+        $apiResponse = $this->cardsApi->createCard($request);
 
         if ($apiResponse->isSuccess()) {
             $createCardResponse = $apiResponse->getResult();
@@ -351,7 +360,7 @@ class Transaction
         $body->getAppFeeMoney()->setCurrency(Models\Currency::USD);
         $body->setOrderId($payment->getOrderID());
         $body->setCustomerId($payment->getCustomerID());
-        $body->setLocationId(LOCATION_ID);
+        $body->setLocationId($this->LOCATION_ID);
         $body->setReferenceId($payment->getReferenceID());
 
         $apiResponse = $paymentsApi->createPayment($body);
@@ -372,12 +381,12 @@ class AccountBuilder
         protected $accountCount = 0;
         public function __construct()
         {
-            $accountCount++;
+            $this->accountCount++;
         }
         function createAccount() : Account {}
         function getCount()
            {
-               return $accountCount;
+               return $this->accountCount;
            }
     }
 
@@ -394,13 +403,13 @@ class Account
 
        public function __construct(){}
 
-       function getFirstName() : string {return $firstName;}
-       function getLastName() : string {return $lastName;}
-       function getEmail() : string {return $email;}
-       function getAccountID() : int {return $accountID;}
-       function getUsername() : string {return $username;}
-       function getPassword() : string {return $password;}
-       function getProfile() : string {return $profile;}
+       function getFirstName() : string {return $this->firstName;}
+       function getLastName() : string {return $this->lastName;}
+       function getEmail() : string {return $this->email;}
+       function getAccountID() : int {return $this->accountID;}
+       function getUsername() : string {return $this->username;}
+       function getPassword() : string {return $this->password;}
+       function getProfile() : string {return $this->profile;}
 
        function setFirstName($firstName) {$this->firstName = $firstName;}
        function setLastName($lastName) {$this->lastName = $lastName;}
@@ -417,12 +426,12 @@ class ItemBuilder
         protected $itemCount = 0;
         public function __construct()
         {
-            $itemCount++;
+            $this->itemCount++;
         }
         function createItem() : Item {}
         function getCount()
            {
-               return $itemCount;
+               return $this->itemCount;
            }
     }
 
@@ -443,11 +452,11 @@ class Item
             $this->quantity = $quantity;
        }
 
-       function getItemID(){return $itemID;}
-       function getItemName(){return $itemName;}
-       function getItemPrice(){return $itemPrice;}
-       function getItemPicture(){return $itemPicture;}
-       function getQuantity(){return $quantity;}
+       function getItemID(){return $this->itemID;}
+       function getItemName(){return $this->itemName;}
+       function getItemPrice(){return $this->itemPrice;}
+       function getItemPicture(){return $this->itemPicture;}
+       function getQuantity(){return $this->quantity;}
 
 
        function setItemID($itemID) {$this->itemID = $itemID;}
@@ -463,12 +472,12 @@ class ErrorBuilder
         protected $errorCount = 0;
         public function __construct()
         {
-            $errorCount++;
+            $this->errorCount++;
         }
         function createError() : Error {}
         function getCount()
            {
-               return $errorCount;
+               return $this->errorCount;
            }
     }
 class Error
@@ -480,7 +489,7 @@ class Test {
 ///// TEST CODE /////
 
     //Card
-    $sourceID = 1;
+    public $sourceID = 1;
     $referenceID = 1;
     $customerID= 1;
     $indepodenceyKey = "test";
