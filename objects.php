@@ -3,6 +3,7 @@
 ////// SQUARE API INTEGRATION //////
 require 'vendor/autoload.php';
 
+use Square\Models;
 use Square\SquareClient;
 use Square\Environment;
 use Square\Exceptions\ApiException;
