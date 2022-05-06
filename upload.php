@@ -85,8 +85,17 @@ if(isset($_POST['btnSubmit'])){
 
                         $fileDestination = 'uploads/' . $fileNewName;
 
-                        move_uploaded_file($fileTmpName, $fileDestination);
+                        print '<p>' . move_uploaded_file($fileTmpName, $fileDestination) . '</p>';
                         
+                        $sql = 'UPDATE tblItem SET fldItemPicture' . $i . ' = ? WHERE pmkItemId = ?';
+                        $data = array();
+                        $data[] .= $fileDestination;
+                        $data[] .= $insertId;
+                        
+
+                        if($thisDatabaseWriter->update($sql, $data)){
+                            print '<p>YAY WORKED</p>';
+                        }
                     }
                     else{
                         print '<script>
@@ -97,7 +106,7 @@ if(isset($_POST['btnSubmit'])){
                 }
                 elseif($fileError == 4){
                     #file error 4 means there is no file uploaded so i dont want anything to happen so just this comment here :/
-                    #Hows ur day goin bob or whoever is grading this :)
+                    #Hows ur day goin Bob or whoever is grading this :)
                 }
                 else{
                     print '<script>

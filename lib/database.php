@@ -106,6 +106,11 @@ class DataBase{
         return $status;
     }
 
+    function lastInsertId(){
+        $insertId = $this->pdo->lastInsertId();
+        return $insertId;
+    }
+
     function displayQuery($query, $values = '') {
         if (is_array($values)){
             $needle = '?';
