@@ -153,9 +153,7 @@ class EventHandler
 {
     protected $websiteData = [];
 
-    public function __construct()
-    {
-    }
+    public function __construct(){}
     function createEvent($eventType) : Event {}
     function createResponse($eventType) : Response {}
 }
@@ -224,9 +222,16 @@ class TransactionBuilder
     protected $transactionCount = 0;
     public function __construct()
     {
+    }
+    function createTransaction() : Transaction
+    {
+        $transaction = new Transaction();
+        $cardData = $transaction->promptCard();
+        $card = $transaction->createCard($cardData);
+        $paymentData = $transaction->promptPayment();
+        $payment = $transaction->createPayment($paymentData);
         $transactionCount++;
     }
-    function createTransaction() : Transaction {}
     function getCount()
     {
         return $transactionCount;
@@ -235,13 +240,45 @@ class TransactionBuilder
 
 class Transaction
 {
-    public function __construct(){}
+    protected $transactionID;
+    protected $senderID;
+    protected $receiverID;
+    protected $itemID;
+    protected $transactionAmount;
+    protected $date;
+
+    public function __construct($transactionID, $senderID, $receiverID, $transactionAmount, $date)
+    {
+        $this->transactionID = $transactionID;
+        $this->senderID = $senderID;
+        $this->receiverID = $receiverID;
+        $this->itemID = $itemID;
+        $this->transactionAmount = $transactionAmount;
+        $this->date = $date;
+    }
+
+    function getTransactionID() : int {return $transactionID;}
+    function getSenderID() : int {return $senderID;}
+    function getReceiverID() : int {return $receiverID;}
+    function getItemID() : int {return $itemID;}
+    function getTransactionAmount() : double {return $transactionAmount;}
+    function getDate() : string {return $date;}
+
+    function setTransactionID() {$this->transactionID = $transactionID;}
+    function setSenderID() {$this->senderID = $senderID;}
+    function setReceiverID() {$this->receiverID = $receiverID;}
+    function setItemID() {$this->itemID = $itemID;}
+    function setTransactionAmount() {$this->transactionAmount = $transactionAmount;}
+    function setDate() {$this->date = $date;}
+
+
     function promptCard() : array {}
-    function createCard() : Card {}
-    function createPayment() : Payment {}
-    function listPayments() : array {}
-    function updatePayment() : array {}
-    function completePayment() : bool {}
+    function createCard($cardData) : Card {}
+    function promptPayment() : array {}
+    function createPayment($paymentData) : Payment {}
+    function listPayments($params) : array {}
+    function updatePayment($payment) : array {}
+    function completePayment($payment) : bool {}
 }
 
 class AccountBuilder
@@ -260,7 +297,33 @@ class AccountBuilder
 
 class Account
     {
+
+       protected $firstName;
+       protected $lastName;
+       protected $email;
+       protected $accountID;
+       protected $username;
+       protected $password;
+       protected $profile;
+
        public function __construct(){}
+
+       function getFirstName() : string {return $firstName;}
+       function getLastName() : string {return $lastName;}
+       function getEmail() : string {return $email;}
+       function getAccountID() : int {return $accountID;}
+       function getUsername() : string {return $username;}
+       function getPassword() : string {return $password;}
+       function getProfile() : string {return $profile;}
+
+       function setFirstName($firstName) {$this->firstName = $firstName;}
+       function setLastName($lastName) {$this->lastName = $lastName;}
+       function setEmail($email) {$this->email = $email;}
+       function setAccountID($accountID) {$this->accountID = $accountID;}
+       function setUsername($username) {$this->username = $username;}
+       function setPassword($password) {$this->password = $password;}
+       function setProfile($profile) {$this->profile = $profile;}
+
     }
 
 class ItemBuilder
@@ -279,7 +342,34 @@ class ItemBuilder
 
 class Item
     {
-       public function __construct(){}
+       protected $itemID;
+       protected $itemName;
+       protected $itemPrice;
+       protected $itemPicture;
+       protected $quantity;
+
+       public function __construct($itemID, $itemName, $itemPrice, $itemPicture, $quantity)
+       {
+            $this->itemID = $itemID;
+            $this->itemName = $itemName;
+            $this->itemPrice = $itemPrice;
+            $this->itemPicture = $itemPicture;
+            $this->quantity = $quantity;
+       }
+
+       function getItemID(){return $itemID;}
+       function getItemName(){return $itemName;}
+       function getItemPrice(){return $itemPrice;}
+       function getItemPicture(){return $itemPicture;}
+       function getQuantity(){return $quantity;}
+
+
+       function setItemID($itemID) {$this->itemID = $itemID;}
+       function setItemName($itemName) {$this->itemName = $itemName;}
+       function setItemPrice($itemPrice) {$this->itemPrice = $itemPrice;}
+       function setItemPicture($itemPicture) {$this->itemPicture = $itemPicture;}
+       function setQuantity($quantity) {$this->quantity = $quantity;}
+
     }
 
 class ErrorBuilder
