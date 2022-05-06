@@ -1,5 +1,24 @@
 <?php
 
+////// SQUARE API INTEGRATION //////
+use Square\SquareClient;
+use Square\Environment;
+use Square\Exceptions\ApiException;
+
+define(SQUARE_ACCESS_TOKEN, "EAAAEAKGqT5HJRmmABos29dEnrME4iYc6xjeFChAJCwSvXxbx6l2fPAGX6rta_oG");
+define(SQUARE_APPLICATION_ID, "sandbox-sq0idb-VJ0u64Lfk4fWpYxu5P_6pg");
+define(LOCATION_ID, "L9ARQHGTNAH8D");
+
+
+$client = new SquareClient([
+    'accessToken' => SQUARE_ACCESS_TOKEN,
+    'environment' => Environment::SANDBOX,
+]);
+
+$cardsApi = $client->getCardsApi();
+
+$paymentsApi = $client->getPaymentsApi();
+
 // Card object => Used to create object that can pass parameters to the api
 class Card
 {
@@ -273,9 +292,75 @@ class Transaction
 
 
     function promptCard() : array {}
-    function createCard($cardData) : Card {}
+    function createCard($card)
+    {
+        $idempotencyKey = $card->getIndepodenceyKey();
+        $sourceID = $card->getSourceID();
+
+
+        $body = new Models\Card;
+
+        $body->setID($card->getAccountID());
+        $body->setCardBrand($card->getCardBrand());
+        $body->setLast4($card->getLastFour());
+        $body->setExpMonth($card->getMonth());
+        $body->setExpYear($card->getYear());
+        $body->setCardholderName($card->getFirstName() . " " . $card->getLastName());
+        $body->setBillingAddress(new Models\Address);
+        $body->getBillingAddress()->setAddressLine1($card->getBillingAddress()->getLineOne());
+        $body->getBillingAddress()->setAddressLine2($card->getBillingAddress()->getLineTwo());
+        $body->getBillingAddress()->setAddressLine3($card->getBillingAddress()->getLineThree());
+        $body->getBillingAddress()->setLocality($card->getBillingAddress()->getCity());
+        $body->getBillingAddress()->setAdministrativeDistrictLevel1($card->getBillingAddress()->getState());
+        $body->getBillingAddress()->setPostalCode($card->getBillingAddress()->getZipCode());
+        $body->getBillingAddress()->setCountry(Models\Country::US);
+        $body->setCustomerId($card->getCustomerID());
+        $body->setReferenceId($card->getReferenceID());
+
+        $request = new Models\CreateCardRequest($indepodenceyKey, $sourceID, $body);
+
+        $request->setVerificationToken(uniqid());
+
+        $apiResponse = $cardsApi->createCard($request);
+
+        if ($apiResponse->isSuccess()) {
+            $createCardResponse = $apiResponse->getResult();
+        } else {
+            $errors = $apiResponse->getErrors();
+        }
+    }
     function promptPayment() : array {}
-    function createPayment($paymentData) : Payment {}
+    function createPayment($payment)
+    {
+        $body_sourceId = $payment->getSourceID();
+        $body_idempotencyKey = $payment->getIndepodenceyKey();
+        $body_amountMoney = new Models\Money;
+        $body_amountMoney->setAmount($payment->getAmount());
+        $body_amountMoney->setCurrency(Models\Currency::USD);
+        $body = new Models\CreatePaymentRequest(
+            $body_sourceId,
+            $body_idempotencyKey,
+            $body_amountMoney
+        );
+        $body->setTipMoney(new Models\Money);
+        $body->getTipMoney()->setAmount($payment->getTipAmount());
+        $body->getTipMoney()->setCurrency(Models\Currency::USD);
+        $body->setAppFeeMoney(new Models\Money);
+        $body->getAppFeeMoney()->setAmount($payment->getAppFee());
+        $body->getAppFeeMoney()->setCurrency(Models\Currency::USD);
+        $body->setOrderId($payment->getOrderID());
+        $body->setCustomerId($payment->getCustomerID());
+        $body->setLocationId(LOCATION_ID);
+        $body->setReferenceId($payment->getReferenceID());
+
+        $apiResponse = $paymentsApi->createPayment($body);
+
+        if ($apiResponse->isSuccess()) {
+            $createPaymentResponse = $apiResponse->getResult();
+        } else {
+            $errors = $apiResponse->getErrors();
+        }
+    }
     function listPayments($params) : array {}
     function updatePayment($payment) : array {}
     function completePayment($payment) : bool {}
@@ -390,3 +475,8 @@ class Error
     public function __construct(){}
 }
 ?>
+
+
+
+
+
