@@ -6,13 +6,23 @@ define('PATH_PARTS', array('filename' => 'about'));
     if (PATH_PARTS['filename'] == "index"){
         print'activePage';
     }
-    ?>" href="index.php">Index</a>
 
+    ?>" href="index.php">Home</a>
     <a class="<?php
     if (PATH_PARTS['filename'] == "marketplace"){
         print'activePage';
     }
     ?>" href="marketplace.php">Marketplace</a>
+    <a class="<?php
+    if (PATH_PARTS['filename'] == "login"){
+        print'activePage';
+    }
+    ?>" href="login.php">Login</a>
+    <a class="<?php
+    if (PATH_PARTS['filename'] == "account"){
+        print'activePage';
+    }
+    ?>" href="account.php">Account</a>
     <a class="<?php
     if (PATH_PARTS['filename'] == "admin"){
         print'activePage';

@@ -47,9 +47,9 @@ if(!array_search($netId,array_column($adminNetId,'netId'))){
 
 print PHP_EOL;
 
-include 'header.php';
+include 'nav.php';
 print PHP_EOL;
 
-include 'nav.php';
+include 'header.php';
 print PHP_EOL;
 ?>

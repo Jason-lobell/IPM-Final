@@ -1,30 +1,15 @@
 <?php
 include 'lib/top.php';
-$sql = 'SELECT pmkWildlifeid, fldType, fldCommonName, fldDescription, fldHabitat, fldReproduction, fldManagement, fldStatus, fldMainImage ';
-$sql .= 'FROM tblWildlife ORDER BY fldCommonName;';
 
-$data ='';
-$animals = $thisDatabaseReader->select($sql, $data);
-
+$idk = getenv('SQUARE_ACCESS_TOKEN');
+print '<p>' . $idk . '</p>';
 ?>
-
 <main>
-    <h2>Vermonts Wildlife</h2>
-    
-    <figure>
-    <?php 
-    foreach($animals as $value){
-        print '<img src="' . $value['fldMainImage'] . '"alt="' . $value['fldCommonName'] . '">';
-        print '<a href="displayCritter.php?cid=' . $value['pmkWildlifeid'] . '"><figcaption>' . $value['fldCommonName'] . '</figcaption></a>';
-    }
-    ?>
-    
-    </figure>
+    <h1>Home Page</h1>
+    <p>You can buy and sell items of your choosing! The Major Market(name in progress idk what to call it) is at your disposal!</p>
 
+    <p>Will add more with input!</p>
 </main>
-
-
-
 <?php
 include 'lib/footer.php';
 ?>

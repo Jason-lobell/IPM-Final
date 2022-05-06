@@ -29,14 +29,15 @@
         ?>
     </head>
 <?php
+session_start();
 print '<body>';
 print '<!-- ***** START OF BODY ****** -->';
 
 print PHP_EOL;
 
-include 'header.php';
+include 'nav.php';
 print PHP_EOL;
 
-include 'nav.php';
+include 'header.php';
 print PHP_EOL;
 ?>
