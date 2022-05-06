@@ -32,6 +32,9 @@ else{
     $password2 = getData('passPassword2');
     $agreeToTerms = (int) getData("chkTerms");
 
+    $sql = "SELECT * FROM tblAccount WHERE fldEmail = ?";
+    $data = array($emailAdress);
+
     //Validate Data
     if (!preg_match("/^[a-zA-Z-' ]*$/",$firstName)) {
         print '<p>PLEASE CHOOSE A VALID FIRST NAME.</p>';
@@ -43,6 +46,10 @@ else{
     }
     if (!filter_var($emailAdress, FILTER_VALIDATE_EMAIL)) {
         print '<p>PLEASE CHOOSE A VALID EMAIL ADRESS.</p>';
+        $saveData = false;
+    }
+    elseif($thisDatabaseReader->select($sql,$data)){
+        print '<p>This email already has an account associated with it. Try again with a different email or contact an admin</p>';
         $saveData = false;
     }
     if($password1 == $password2){
