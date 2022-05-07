@@ -277,7 +277,7 @@ class AccountBuilder
     {
         $this->accountCount++;
     }
-// function createAccount() : Account {}
+    function createAccount() : Account {}
     function getCount()
     {
         return $this->accountCount;
@@ -291,7 +291,7 @@ class ItemBuilder
     {
         $this->itemCount++;
     }
-// function createItem() : Item {}
+    function createItem() : Item {}
     function getCount()
     {
         return $this->itemCount;
@@ -304,7 +304,7 @@ class ErrorBuilder
     {
         $this->errorCount++;
     }
-// function createError() : Error {}
+    function createError() : Error {}
     function getCount()
     {
         return $this->errorCount;
@@ -354,7 +354,6 @@ class Transaction
     function createCard($card) : Card
     {
         $sourceID = $card->getSourceID();
-
 
         $body = new Models\Card;
 
@@ -503,7 +502,8 @@ class Error
     public function __construct(){}
 }
 
-class Test {
+class Test
+{
 ///// TEST CODE /////
 }
 ?>
