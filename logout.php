@@ -1,6 +1,7 @@
 <?php 
 include 'lib/top.php';
 
+
 if(isset($_POST['btnSubmit'])){
     session_unset();
     session_destroy();
