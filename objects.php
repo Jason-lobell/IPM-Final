@@ -150,7 +150,7 @@ class Payment
         function getOrderID() : int {return $this->orderID;}
         function getAmount() : float {return $this->amount;}
         function getAppFee() : float {return $this->appFee;}
-        function getTipAmount() : float {return $this->tipAmount;}
+        function getTipAmount() : ?float {return $this->tipAmount;}
 
     // Setters
         function setSourceID($sourceID){$this->sourceID = $sourceID;}
@@ -558,7 +558,7 @@ class Test
             $lineTwo = "linetwo";
             $lineThree = "linethree";
             $state = "state";
-            $zip = 01;
+            $zip = 10580;
 
         $addressToken = new BillingAddress($lineOne, $lineTwo, $lineThree, $state, $city, $zip, $country);
 
@@ -578,7 +578,7 @@ class Test
         $lastFour = 1234;
         $firstName = "firstName";
         $lastName = "lastName";
-        $month = "month";
+        $month = 1;
         $refID = 1;
         $sourceID = 1;
         $year = 1;
@@ -701,6 +701,3 @@ class Test
 
 }
 ?>
-
-
-
