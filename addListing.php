@@ -89,15 +89,15 @@ else{
             </p>
         </fieldset>
         <fieldset>
-            <label for="file">Upload Picture1</label>
+            <label for="file">Upload Picture 1</label>
             <input type="file" name="file[]">
-            <label for="file">Upload Picture2</label>
+            <label for="file">Upload Picture 2</label>
             <input type="file" name="file[]">
-            <label for="file">Upload Picture3</label>
+            <label for="file">Upload Picture 3</label>
             <input type="file" name="file[]">
-            <label for="file">Upload Picture4</label>
+            <label for="file">Upload Picture 4</label>
             <input type="file" name="file[]">
-            <label for="file">Upload Piture5</label>
+            <label for="file">Upload Picture 5</label>
             <input type="file" name="file[]">
         </fieldset>
         <fieldset>
