@@ -570,16 +570,18 @@ class Test
             echo $addressToken->getZipCode();
             echo $addressToken->getCountry();
 
+
+
         $cardBrand = "brand";
-        $customerID = "customerID";
+        $customerID = 1;
         $indepodency = "ikey";
         $lastFour = 1234;
         $firstName = "firstName";
         $lastName = "lastName";
         $month = "month";
-        $refID = "refID";
-        $sourceID = "sourceID";
-        $year = "year";
+        $refID = 1;
+        $sourceID = 1;
+        $year = 1;
 
         $card = new Card($sourceID, $refID, $customerID, $indepodency, $firstName, $lastName, $lastFour, $cardBrand, $month, $year, $addressToken);
 
