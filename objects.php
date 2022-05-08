@@ -322,14 +322,14 @@ class ErrorBuilder
     {
         $this->eventHandler = new EventHandler();
     }
-    function createError() : Error {
+    function createError() : UIError {
         $eventType = "Error";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
 
         $data = $response->getData();
-        $error = new Error();
+        $error = new UIError();
 
         $this->errorCount++;
         return $error;
@@ -526,7 +526,7 @@ class Item
     }
 
 
-class Error
+class UIError
 {
     public function __construct(){}
 }
