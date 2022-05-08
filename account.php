@@ -20,9 +20,16 @@ else{
     // Sanitize
     $emailAdress = getData('txtEmail');
 
+    $sql = "SELECT * FROM tblAccount WHERE fldEmail = ?";
+    $data = array($emailAdress);
+
     //Validate 
     if (!filter_var($emailAdress, FILTER_VALIDATE_EMAIL)) {
         print '<p>PLEASE CHOOSE A VALID EMAIL ADRESS.</p>';
+        $saveData = false;
+    }
+    elseif($thisDatabaseReader->select($sql,$data)){
+        print '<p>This email already has an account associated with it. Try again with a different email or contact an admin</p>';
         $saveData = false;
     }
 
