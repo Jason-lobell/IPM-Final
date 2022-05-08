@@ -181,16 +181,7 @@ class EventHandler
     }
 }
 
-// EventType Enum => Groups data types for event handler
-enum EventType {
 
-    case Transaction;
-    case Account;
-    case Item;
-    case Error;
-    case Response;
-
-}
 
 //Event Object => All interactions between users of the site and the back-end involved will happen through these objects
 
@@ -219,16 +210,16 @@ class Response
         $this->responseID++;
         switch($this->eventType) {
 
-            case EventType::Transaction:
+            case "Transaction":
                 $this->data = $this->promptTransaction();
                 break;
-            case EventType::Account:
+            case "Account":
                 $this->data = $this->promptAccountRegistration();
                 break;
-            case EventType::Item:
+            case "Item":
                 $this->data = $this->promptItemCreation();
                 break;
-            case EventType::Error:
+            case "Error":
                 $this->data = $this->promptError();
                 break;
         }
@@ -251,7 +242,7 @@ class TransactionBuilder
     }
     function createTransaction() : Transaction
     {
-        $eventType = EventType::Transaction;
+        $eventType = "Transaction";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
@@ -279,7 +270,7 @@ class AccountBuilder
         $this->eventHandler = new EventHandler();
     }
     function createAccount() : Account {
-        $eventType = EventType::Account;
+        $eventType = "Account";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
@@ -307,7 +298,7 @@ class ItemBuilder
     }
     function createItem() : Item {
 
-        $eventType = EventType::Item;
+        $eventType = "Item";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
@@ -332,7 +323,7 @@ class ErrorBuilder
         $this->eventHandler = new EventHandler();
     }
     function createError() : Error {
-        $eventType = EventType::Error;
+        $eventType = "Error";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
