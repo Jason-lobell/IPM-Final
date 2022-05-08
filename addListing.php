@@ -82,22 +82,22 @@ else{
             <p>
                 <label for="txtName">Product Name</label>
                 <input type="text" name="txtName"  value="<?php print $name;?>">
-                <label for="numPrice">Price of Procut</label>
+                <label for="numPrice">Price of Product</label>
                 <input type="number" min="1" name="numPrice" step="any" value="<?php print $price?>">
                 <label for="numStock">How many availble to sell</label>
                 <input type="number" min="1" name="numStock" value="<?php print $stock ?>">
             </p>
         </fieldset>
         <fieldset>
-            <label for="file">Upload Picture1</label>
+            <label for="file">Upload Picture 1</label>
             <input type="file" name="file[]">
-            <label for="file">Upload Picture2</label>
+            <label for="file">Upload Picture 2</label>
             <input type="file" name="file[]">
-            <label for="file">Upload Picture3</label>
+            <label for="file">Upload Picture 3</label>
             <input type="file" name="file[]">
-            <label for="file">Upload Picture4</label>
+            <label for="file">Upload Picture 4</label>
             <input type="file" name="file[]">
-            <label for="file">Upload Piture5</label>
+            <label for="file">Upload Picture 5</label>
             <input type="file" name="file[]">
         </fieldset>
         <fieldset>
