@@ -82,7 +82,7 @@ else{
             <p>
                 <label for="txtName">Product Name</label>
                 <input type="text" name="txtName"  value="<?php print $name;?>">
-                <label for="numPrice">Price of Procut</label>
+                <label for="numPrice">Price of Product</label>
                 <input type="number" min="1" name="numPrice" step="any" value="<?php print $price?>">
                 <label for="numStock">How many availble to sell</label>
                 <input type="number" min="1" name="numStock" value="<?php print $stock ?>">
