@@ -13,14 +13,32 @@ function getData($field) {
 }
 $saveData = true;
 
+$uId = (isset($_GET['uId'])) ? (int) htmlspecialchars($_GET['uId']) : 0;
+
+$sql = "SELECT * FROM tblAccount WHERE pmkAccountId = ?";
+$data = array($uId);
+
+$results = $thisDatabaseReader->select($sql,$data);
+
 if(!isset($_POST['btnSubmit'])){
-    $firstName = "";
-    $lastName = "";
-    $emailAdress = "";
-    $username = "";
-    $password1 = "";
-    $password2 = "";
-    $agreeToTerms = 1;
+    if(is_array($results)){
+        $firstName = $results[0]['fldFirstName'];
+        $lastName = $results[0]['fldLastName'];
+        $emailAdress = $results[0]['fldEmail'];
+        $username = $results[0]['fldUsername'];
+        $password1 = $results[0][''];
+        $password2 = $results[0][''];
+        $agreeToTerms = 1;
+    }
+    else{
+        $firstName = "";
+        $lastName = "";
+        $emailAdress = "";
+        $username = "";
+        $password1 = "";
+        $password2 = "";
+        $agreeToTerms = 1;
+    }
 }
 else{
     //Sanitize Data
