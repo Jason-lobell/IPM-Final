@@ -542,7 +542,169 @@ class Error
 
 class Test
 {
-///// TEST CODE /////
+    public $card;
+    public $payment;
+    public $transaction;
+    public $account;
+    public $item;
+
+    public function __construct()
+    {
+        $this->card = $this->cardTest();
+        $this->payment = $this->paymentTest();
+        $this->transaction = $this->transactionTest();
+        $this->account = $this->accountTest();
+        $this->item = $this->itemTest();
+    }
+
+    function cardTest() : Card
+    {
+        //Billing Address
+
+            $city = "city";
+            $country = "country";
+            $lineOne = "lineone";
+            $lineTwo = "linetwo";
+            $lineThree = "linethree";
+            $state = "state";
+            $zip = "zip";
+
+        $addressToken = new BillingAddress($lineOne, $lineTwo, $lineThree, $state, $city, $zip, $country);
+
+            echo $addressToken->getLineOne();
+            echo $addressToken->getLineTwo();
+            echo $addressToken->getLineThree();
+            echo $addressToken->getState();
+            echo $addressToken->getCity();
+            echo $addressToken->getZipCode();
+            echo $addressToken->getCountry();
+
+        $cardBrand = "brand";
+        $customerID = "customerID";
+        $indepodency = "ikey";
+        $lastFour = 1234;
+        $firstName = "firstName";
+        $lastName = "lastName";
+        $month = "month";
+        $refID = "refID";
+        $sourceID = "sourceID";
+        $year = "year";
+
+        $card = new Card($sourceID, $refID, $customerID, $indepodency, $firstName, $lastName, $lastFour, $cardBrand, $month, $year, $addressToken);
+
+            echo $card->getSourceID();
+            echo $card->getReferenceID();
+            echo $card->getCustomerID();
+            echo $card->getIndepodenceyKey();
+            echo $card->getfirstName();
+            echo $card->getLastName();
+            echo $card->getLastFour();
+            echo $card->getCardBrand();
+            echo $card->getMonth();
+            echo $card->getYear();
+
+        return $card;
+    }
+    function paymentTest() : Payment
+    {
+
+        $sourceID = 1;
+        $referenceID = 1;
+        $customerID = 1;
+        $indepodenceyKey = "";
+        $orderID = 1;
+        $amount = 1;
+        $appFee = 1;
+        $tipAmount = 1;
+
+        $payment = new Payment($sourceID, $referenceID, $customerID, $indepodenceyKey, $orderID, $amount, $appFee, $tipAmount);
+
+            echo $payment->getSourceID();
+            echo $payment->getReferenceID();
+            echo $payment->getCustomerID();
+            echo $payment->getIndepodenceyKey();
+            echo $payment->getOrderID();
+            echo $payment->getAmount();
+            echo $payment->getAppFee();
+            echo $payment->getTipAmount();
+
+        return $payment;
+
+    }
+    function transactionTest() : Transaction
+    {
+
+        $transactionID = 1;
+        $senderID = 1;
+        $receiverID = 1;
+        $itemID = 1;
+        $transactionAmount = 1;
+        $date = 1;
+
+        $transaction = new Transaction($transactionID, $senderID, $receiverID, $itemID, $transactionAmount, $date);
+
+            echo $transaction->getTransactionID();
+            echo $transaction->getSenderID();
+            echo $transaction->getReceiverID();
+            echo $transaction->getItemID();
+            echo $transaction->getTransactionAmount();
+            echo $transaction->getDate();
+
+        return $transaction;
+
+    }
+    function accountTest() : Account
+    {
+
+        $firstName = "firstname";
+        $lastName = "lastname";
+        $email = "email";
+        $accountID = 1;
+        $username = "username";
+        $password = "password";
+        $profile = "profile";
+
+        $account = new Account($firstName, $lastName, $email, $accountID, $username, $password, $profile);
+
+            echo $account->getFirstName();
+            echo $account->getLastName();
+            echo $account->getEmail();
+            echo $account->getAccountID();
+            echo $account->getUsername();
+            echo $account->getPassword();
+            echo $account->getProfile();
+
+        return $account;
+
+    }
+    function itemTest() : Item
+    {
+
+        $itemID = 1;
+        $itemName = "name";
+        $itemPrice = 1;
+        $itemPicture = "picture";
+        $quantity = 1;
+
+        $item = new Item($itemID,$itemName, $itemPrice, $itemPicture, $quantity);
+
+            echo $item->getItemID();
+            echo $item->getItemName();
+            echo $item->getItemPrice();
+            echo $item->getItemPicture();
+            echo $item->getQuantity();
+
+        return $item;
+
+    }
+
+    function getCard(){return $this->card;}
+    function getPayment(){return $this->payment;}
+    function getTransaction(){return $this->transaction;}
+    function getAccount(){return $this->account;}
+    function getItem(){return $this->item;}
+
+
 
 }
 ?>
