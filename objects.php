@@ -558,7 +558,7 @@ class Test
             $lineTwo = "linetwo";
             $lineThree = "linethree";
             $state = "state";
-            $zip = "zip";
+            $zip = 01;
 
         $addressToken = new BillingAddress($lineOne, $lineTwo, $lineThree, $state, $city, $zip, $country);
 
