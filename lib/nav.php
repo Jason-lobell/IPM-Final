@@ -13,11 +13,22 @@ define('PATH_PARTS', array('filename' => 'about'));
         print'activePage';
     }
     ?>" href="marketplace.php">Marketplace</a>
-    <a class="<?php
-    if (PATH_PARTS['filename'] == "login"){
-        print'activePage';
+    <?php
+    if(isset($_SESSION['userId'])){
+        print '<a class="';
+        if (PATH_PARTS['filename'] == "logout.php"){
+            print'activePage';
+        }
+        print '" href="logout.php">Logout</a>';
     }
-    ?>" href="login.php">Login</a>
+    else{
+        print '<a class="';
+        if (PATH_PARTS['filename'] == "login.php"){
+            print'activePage';
+        }
+        print '" href="login.php">Login</a>';
+    }
+    ?>
     <a class="<?php
     if (PATH_PARTS['filename'] == "account"){
         print'activePage';
@@ -28,4 +39,5 @@ define('PATH_PARTS', array('filename' => 'about'));
         print'activePage';
     }
     ?>" href="admin/admin.php">Admin</a>
+    <a href="login.php"></a>
 </nav>
