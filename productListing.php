@@ -1,7 +1,7 @@
 <?php
-include 'top.php';
+include 'lib/top.php';
 
-$uId = (isset($_GET['pId'])) ? (int) htmlspecialchars($_GET['pId']) : 0;
+$pId = (isset($_GET['pId'])) ? (int) htmlspecialchars($_GET['pId']) : 0;
 
 $sql = 'SELECT * FROM tblItem WHERE pmkItemId = ?';
 $data = array();
@@ -10,17 +10,22 @@ $data[] .= $pId;
 $records = $thisDatabaseReader->select($sql, $data);
 
 
-foreach($records as $record){
-    for($i = 0; $i < 5 ; $i++){
-        $pic = '../';
-        $pic .= $record['fldItemPicture' . $i];
-        print '<figure>
-            <img src="' . $pic .'" alt="' . $pic . '">
-            <figcaption>Picture Number' . $i .'</figcaption>
-            </figure>';
-    }
-    print '<p>Item Name: ' . $record['fldItemName'] . ' Item Price: ' . $record['fldItemPrice'] . ' Item Description: ' . $record['fldItemDesc'] . ' Item Count left: ' . $record['fldStock'];
+for($i = 0; $i < 5 ; $i++){
+    $pic = $records[0]['fldItemPicture' . $i];
+    print '<figure>
+        <img src="' . $pic .'" alt="' . $pic . '">
+        <figcaption>Picture Number' . $i .'</figcaption>
+        </figure>';
 }
-
+print '<p>Item Name: ' . $records[0]['fldItemName'] . ' Item Price: ' . $records[0]['fldItemPrice'] . ' Item Description: ' . $records[0]['fldItemDesc'] . ' Item Count left: ' . $records[0]['fldStock'];
 ?>
+
+<form action="handleStuff.php" method="POST">
+    <fieldset>
+        <p>
+            <input type="submit" name="btnSubmit" value="Submit">
+        </p>
+    </fieldset>
+    <input type="hidden" name="hidProductId" value="<?php print $pId;?>">
+</form>
 
