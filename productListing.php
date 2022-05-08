@@ -20,12 +20,14 @@ for($i = 0; $i < 5 ; $i++){
 print '<p>Item Name: ' . $records[0]['fldItemName'] . ' Item Price: ' . $records[0]['fldItemPrice'] . ' Item Description: ' . $records[0]['fldItemDesc'] . ' Item Count left: ' . $records[0]['fldStock'];
 ?>
 
-<form action="handleStuff.php" method="POST">
+<form action="collectPayment.php" method="GET">
     <fieldset>
         <p>
             <input type="submit" name="btnSubmit" value="Submit">
         </p>
     </fieldset>
     <input type="hidden" name="hidProductId" value="<?php print $pId;?>">
+    <input type="hiden" name="hidPrice" value="<?php print $records[0]['fldItemPrice'];?>">
+    <input type="hidden" name="hidItemName" value="<?php print $records[0]['fldItemName'];?>">
 </form>
 
