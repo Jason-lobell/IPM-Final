@@ -22,18 +22,18 @@ $paymentsApi = $client->getPaymentsApi();
 // Card object => Used to create object that can pass parameters to the api
 class Card
 {
-    public $sourceID;
-    public $referenceID;
-    public $customerID;
-    public $indepodenceyKey;
-    public $firstName;
-    public $lastName;
-    public $lastFour;
-    public $cardBrand;
-    public $month;
-    public $year;
+    protected $sourceID;
+    protected $referenceID;
+    protected $customerID;
+    protected $indepodenceyKey;
+    protected $firstName;
+    protected $lastName;
+    protected $lastFour;
+    protected $cardBrand;
+    protected $month;
+    protected $year;
     //BillingAddress object
-    public $addressToken;
+    protected $addressToken;
 
     public function __construct($sourceID, $referenceID, $customerID, $indepodenceyKey, $firstName, $lastName, $lastFour, $cardBrand, $month, $year, $addressToken)
     {
@@ -51,7 +51,7 @@ class Card
     }
 
     // Getters
-        public function getSourceID() : int {return $this->sourceID;}
+        function getSourceID() : int {return $this->sourceID;}
         function getReferenceID() : int {return $this->referenceID;}
         function getCustomerID() : int {return $this->customerID;}
         function getIndepodenceyKey() : string {return $this->indepodenceyKey;}
@@ -81,13 +81,13 @@ class Card
 
 class BillingAddress
 {
-        public $lineOne;
-        public $lineTwo;
-        public $lineThree;
-        public $state;
-        public $city;
-        public $zipCode;
-        public $country;
+        protected $lineOne;
+        protected $lineTwo;
+        protected $lineThree;
+        protected $state;
+        protected $city;
+        protected $zipCode;
+        protected $country;
 
         public function __construct($lineOne, $lineTwo, $lineThree, $state, $city, $zipCode, $country)
         {
@@ -543,6 +543,7 @@ class Error
 class Test
 {
 ///// TEST CODE /////
+
 }
 ?>
 
