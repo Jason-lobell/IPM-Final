@@ -203,7 +203,7 @@ class Event
         $this->eventType = $eventType;
         $this->eventID++;
     }
-
+    function getEventType(){ return $this->eventType;}
 }
 
 class Response
@@ -213,11 +213,11 @@ class Response
     public $responseID = 0;
     public $data;
 
-    public function __construct($eventType)
+    public function __construct($event)
     {
-        $this->eventType = $eventType;
+        $this->eventType = $event->getEventType();
         $this->responseID++;
-        switch($eventType) {
+        switch($this->eventType) {
 
             case EventType::Transaction:
                 $this->data = $this->promptTransaction();
@@ -254,7 +254,7 @@ class TransactionBuilder
         $eventType = EventType::Transaction;
 
             $event = $this->eventHandler->createEvent($eventType);
-            $response = $this->eventHandler->createResponse($eventType);
+            $response = $this->eventHandler->createResponse($event);
 
         $data = $response->getData();
         $transaction = new Transaction($data[0],$data[1],$data[2],$data[3],$data[4],$data[5]);
@@ -272,12 +272,25 @@ class TransactionBuilder
 }
 class AccountBuilder
 {
+    protected $eventHandler;
     protected $accountCount = 0;
     public function __construct()
     {
-        $this->accountCount++;
+        $this->eventHandler = new EventHandler();
     }
-    function createAccount() : Account {}
+    function createAccount() : Account {
+        $eventType = EventType::Account;
+
+            $event = $this->eventHandler->createEvent($eventType);
+            $response = $this->eventHandler->createResponse($event);
+
+        $data = $response->getData();
+
+        $account = new Account($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6]);
+
+        $this->accountCount++;
+        return $account;
+    }
     function getCount()
     {
         return $this->accountCount;
@@ -286,12 +299,25 @@ class AccountBuilder
 
 class ItemBuilder
 {
+    protected $eventHandler;
     protected $itemCount = 0;
     public function __construct()
     {
-        $this->itemCount++;
+        $this->eventHandler = new EventHandler();
     }
-    function createItem() : Item {}
+    function createItem() : Item {
+
+        $eventType = EventType::Item;
+
+            $event = $this->eventHandler->createEvent($eventType);
+            $response = $this->eventHandler->createResponse($event);
+
+        $data = $response->getData();
+        $item = new Item($data[0],$data[1],$data[2],$data[3],$data[4]);
+
+        $this->itemCount++;
+        return $item;
+    }
     function getCount()
     {
         return $this->itemCount;
@@ -299,12 +325,24 @@ class ItemBuilder
 }
 class ErrorBuilder
 {
+    protected $eventHandler;
     protected $errorCount = 0;
     public function __construct()
     {
-        $this->errorCount++;
+        $this->eventHandler = new EventHandler();
     }
-    function createError() : Error {}
+    function createError() : Error {
+        $eventType = EventType::Error;
+
+            $event = $this->eventHandler->createEvent($eventType);
+            $response = $this->eventHandler->createResponse($event);
+
+        $data = $response->getData();
+        $error = new Error();
+
+        $this->errorCount++;
+        return $error;
+    }
     function getCount()
     {
         return $this->errorCount;
