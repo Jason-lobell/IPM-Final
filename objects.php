@@ -150,7 +150,7 @@ class Payment
         function getOrderID() : int {return $this->orderID;}
         function getAmount() : float {return $this->amount;}
         function getAppFee() : float {return $this->appFee;}
-        function getTipAmount() : float {return $this->tipAmount;}
+        function getTipAmount() : ?float {return $this->tipAmount;}
 
     // Setters
         function setSourceID($sourceID){$this->sourceID = $sourceID;}
@@ -181,16 +181,7 @@ class EventHandler
     }
 }
 
-// EventType Enum => Groups data types for event handler
-enum EventType {
 
-    case Transaction;
-    case Account;
-    case Item;
-    case Error;
-    case Response;
-
-}
 
 //Event Object => All interactions between users of the site and the back-end involved will happen through these objects
 
@@ -219,16 +210,16 @@ class Response
         $this->responseID++;
         switch($this->eventType) {
 
-            case EventType::Transaction:
+            case "Transaction":
                 $this->data = $this->promptTransaction();
                 break;
-            case EventType::Account:
+            case "Account":
                 $this->data = $this->promptAccountRegistration();
                 break;
-            case EventType::Item:
+            case "Item":
                 $this->data = $this->promptItemCreation();
                 break;
-            case EventType::Error:
+            case "Error":
                 $this->data = $this->promptError();
                 break;
         }
@@ -251,7 +242,7 @@ class TransactionBuilder
     }
     function createTransaction() : Transaction
     {
-        $eventType = EventType::Transaction;
+        $eventType = "Transaction";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
@@ -279,7 +270,7 @@ class AccountBuilder
         $this->eventHandler = new EventHandler();
     }
     function createAccount() : Account {
-        $eventType = EventType::Account;
+        $eventType = "Account";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
@@ -307,7 +298,7 @@ class ItemBuilder
     }
     function createItem() : Item {
 
-        $eventType = EventType::Item;
+        $eventType = "Item";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
@@ -331,14 +322,14 @@ class ErrorBuilder
     {
         $this->eventHandler = new EventHandler();
     }
-    function createError() : Error {
-        $eventType = EventType::Error;
+    function createError() : UIError {
+        $eventType = "Error";
 
             $event = $this->eventHandler->createEvent($eventType);
             $response = $this->eventHandler->createResponse($event);
 
         $data = $response->getData();
-        $error = new Error();
+        $error = new UIError();
 
         $this->errorCount++;
         return $error;
@@ -535,17 +526,180 @@ class Item
     }
 
 
-class Error
+class UIError
 {
     public function __construct(){}
 }
 
 class Test
 {
-///// TEST CODE /////
+    public $card;
+    public $payment;
+    public $transaction;
+    public $account;
+    public $item;
+
+    public function __construct()
+    {
+        $this->card = $this->cardTest();
+        $this->payment = $this->paymentTest();
+        $this->transaction = $this->transactionTest();
+        $this->account = $this->accountTest();
+        $this->item = $this->itemTest();
+    }
+
+    function cardTest() : Card
+    {
+        //Billing Address
+
+            $city = "city";
+            $country = "country";
+            $lineOne = "lineone";
+            $lineTwo = "linetwo";
+            $lineThree = "linethree";
+            $state = "state";
+            $zip = 10580;
+
+        $addressToken = new BillingAddress($lineOne, $lineTwo, $lineThree, $state, $city, $zip, $country);
+
+            echo $addressToken->getLineOne();
+            echo $addressToken->getLineTwo();
+            echo $addressToken->getLineThree();
+            echo $addressToken->getState();
+            echo $addressToken->getCity();
+            echo $addressToken->getZipCode();
+            echo $addressToken->getCountry();
+
+
+
+        $cardBrand = "brand";
+        $customerID = 1;
+        $indepodency = "ikey";
+        $lastFour = 1234;
+        $firstName = "firstName";
+        $lastName = "lastName";
+        $month = 1;
+        $refID = 1;
+        $sourceID = 1;
+        $year = 1;
+
+        $card = new Card($sourceID, $refID, $customerID, $indepodency, $firstName, $lastName, $lastFour, $cardBrand, $month, $year, $addressToken);
+
+            echo $card->getSourceID();
+            echo $card->getReferenceID();
+            echo $card->getCustomerID();
+            echo $card->getIndepodenceyKey();
+            echo $card->getfirstName();
+            echo $card->getLastName();
+            echo $card->getLastFour();
+            echo $card->getCardBrand();
+            echo $card->getMonth();
+            echo $card->getYear();
+
+        return $card;
+    }
+    function paymentTest() : Payment
+    {
+
+        $sourceID = 1;
+        $referenceID = 1;
+        $customerID = 1;
+        $indepodenceyKey = "";
+        $orderID = 1;
+        $amount = 1;
+        $appFee = 1;
+        $tipAmount = 1;
+
+        $payment = new Payment($sourceID, $referenceID, $customerID, $indepodenceyKey, $orderID, $amount, $appFee, $tipAmount);
+
+            echo $payment->getSourceID();
+            echo $payment->getReferenceID();
+            echo $payment->getCustomerID();
+            echo $payment->getIndepodenceyKey();
+            echo $payment->getOrderID();
+            echo $payment->getAmount();
+            echo $payment->getAppFee();
+            echo $payment->getTipAmount();
+
+        return $payment;
+
+    }
+    function transactionTest() : Transaction
+    {
+
+        $transactionID = 1;
+        $senderID = 1;
+        $receiverID = 1;
+        $itemID = 1;
+        $transactionAmount = 1;
+        $date = 1;
+
+        $transaction = new Transaction($transactionID, $senderID, $receiverID, $itemID, $transactionAmount, $date);
+
+            echo $transaction->getTransactionID();
+            echo $transaction->getSenderID();
+            echo $transaction->getReceiverID();
+            echo $transaction->getItemID();
+            echo $transaction->getTransactionAmount();
+            echo $transaction->getDate();
+
+        return $transaction;
+
+    }
+    function accountTest() : Account
+    {
+
+        $firstName = "firstname";
+        $lastName = "lastname";
+        $email = "email";
+        $accountID = 1;
+        $username = "username";
+        $password = "password";
+        $profile = "profile";
+
+        $account = new Account($firstName, $lastName, $email, $accountID, $username, $password, $profile);
+
+            echo $account->getFirstName();
+            echo $account->getLastName();
+            echo $account->getEmail();
+            echo $account->getAccountID();
+            echo $account->getUsername();
+            echo $account->getPassword();
+            echo $account->getProfile();
+
+        return $account;
+
+    }
+    function itemTest() : Item
+    {
+
+        $itemID = 1;
+        $itemName = "name";
+        $itemPrice = 1;
+        $itemPicture = "picture";
+        $quantity = 1;
+
+        $item = new Item($itemID,$itemName, $itemPrice, $itemPicture, $quantity);
+
+            echo $item->getItemID();
+            echo $item->getItemName();
+            echo $item->getItemPrice();
+            echo $item->getItemPicture();
+            echo $item->getQuantity();
+
+        return $item;
+
+    }
+
+    function getCard(){return $this->card;}
+    function getPayment(){return $this->payment;}
+    function getTransaction(){return $this->transaction;}
+    function getAccount(){return $this->account;}
+    function getItem(){return $this->item;}
+
+
 
 }
 ?>
-
 
 

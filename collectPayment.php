@@ -62,6 +62,7 @@ $itemName = (isset($_GET['hidItemName'])) ? (int) htmlspecialchars($_GET['hidIte
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" placeholder="352">
               </div>
+              <input type="hidden" name="hidProductId" value="<?php print $pId;?>">
             </div>
           </div>
         </div>
