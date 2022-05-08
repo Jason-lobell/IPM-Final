@@ -24,12 +24,12 @@ define('PATH_PARTS', array('filename' => 'about'));
     }
     ?>" href="account.php">Account</a>
 
-    <a class="<?php
-        if (PATH_PARTS['filename'] == "addListing"){
-            print'activePage';
-        }
-        ?>" href="addListing.php">Add Listing</a>
 
+        <a class="<?php
+                if (PATH_PARTS['filename'] == "addListing"){
+                    print'activePage';
+                }
+                ?>" href="addListing.php">Add Listing</a>
 
     <a class="<?php
     if (PATH_PARTS['filename'] == "admin"){
