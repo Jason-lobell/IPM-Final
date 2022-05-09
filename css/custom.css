@@ -37,6 +37,10 @@ footer{
     text-decoration: underline transparent;
 }
 
+img{
+  max-width: 15em
+}
+
 .dropdown {
     float: left;
     overflow: hidden;

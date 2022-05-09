@@ -20,6 +20,11 @@ define('PATH_PARTS', array('filename' => 'about'));
             print'activePage';
         }
         print '" href="logout.php">Logout</a>';
+        print '<a class="';
+        if (PATH_PARTS['filename'] == "addListing.php"){
+            print'activePage';
+        }
+        print '" href="addListing.php">Add Product Listing</a>';
     }
     else{
         print '<a class="';

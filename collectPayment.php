@@ -2,11 +2,9 @@
 $pId = (isset($_GET['hidProductId'])) ? (int) htmlspecialchars($_GET['hidProductId']) : 0;
 $price = (isset($_GET['hidPrice'])) ? (int) htmlspecialchars($_GET['hidPrice']) : 0;
 $itemName = (isset($_GET['hidItemName'])) ? (int) htmlspecialchars($_GET['hidItemName']) : 0;
-
-
 ?>
 <!-- 
-    DISCLAIMER!!! This is copied completely from w3 schools and the css is as well i will cite it at the botom of the page in proper mla format:)
+    DISCLAIMER!!! This is taken completely from w3 schools and the css is as well i will cite it at the botom of the page in proper mla format:)
 -->
 <div class="row">
   <div class="col-75">
@@ -88,5 +86,5 @@ $itemName = (isset($_GET['hidItemName'])) ? (int) htmlspecialchars($_GET['hidIte
 <!-- 
 Citations: 
 “How to - Checkout Form.” How To Create a Checkout Form with CSS, https://www.w3schools.com/howto/howto_css_checkout_form.asp. 
-No author info 
+No author info :(
 -->
