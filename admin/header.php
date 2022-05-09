@@ -1,3 +1,3 @@
 <header>
-    <h1>Major Admin ヽ(￣ω￣(￣ω￣〃)ゝ</h1>
+    <h1>Admin Page</h1>
 </header>
