@@ -19,7 +19,6 @@ define('PATH_PARTS', array('filename' => 'about'));
       <a href="adminDelete.php">Update/Delete Record</a>
       <a href="displayAccounts.php">Display Accounts </a>
       <a href="updateAccount.php">Update Account </a>
-      <a href="Display Products">Display Products </a>
     </div>
     </div>
 </nav>
