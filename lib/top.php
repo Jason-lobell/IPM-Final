@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Andrew DeRusso">
-        <meta name="description" content="add-later">
+        <meta name="description" content="IPM Framework">
         <title>add-later</title>
         <link rel="stylesheet" 
             href="css/custom.css?version=<?php print time(); ?>"
