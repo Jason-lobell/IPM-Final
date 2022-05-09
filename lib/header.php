@@ -1,3 +1,3 @@
 <header>
-    <h1>Major Marketplace</h1>
+    <h1>Intellectual Property Marketplace Framework</h1>
 </header>
